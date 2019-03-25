@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	th:with="lang=${#locale.language}" th:lang="${lang}">
+<head>
+<div th:include="default :: header"></div>
+<script type="text/javascript" src="../js/dashboard.js"></script>
+</head>
+<body>
+	<navbar th:replace="default :: bar"></navbar>
+
+	<h2>Dashboard page</h2>
+
+	<h4>See all QR codes</h4>
+	<div>
+			<!--/*/ <th:block th:each="listIterate ,iStat : ${list}"> /*/-->
+		<ul id="tableQR">
+			<li th:text="${list[iStat.index].shortId}"></li>
+			<li><img th:src="'data:image/png;base64,'+${list[iStat.index].strBase64}" style="width:60px; height:60px;"></li>
+			<li><a th:href="@{'/id/'+ ${list[iStat.index].shortId}}">Ver datos públicos</a></li>
+		</ul>
+		<br>
+			<!--/*/ </th:block> /*/-->
+	</div>
+	<button onclick="retriveAllQRFromUser()">Ver todos los QR</button>
+
+	<footer th:replace="default :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,11 @@
+#navigationBar{
+	background-color: black;
+}
+
+#footer {
+	position: fixed;
+	bottom: 0;
+	height: 70px;
+	background-color: black;
+	width: 100%;
+}

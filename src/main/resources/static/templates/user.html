@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" th:with="lang=${#locale.language}" th:lang="${lang}">
+<head>
+<div th:include="default :: header"></div>
+</head>
+<body>
+<navbar th:replace="default :: bar"></navbar>
+
+<h2>User page</h2>
+
+<footer th:replace="default :: footer"></footer>
+</body>
+</html>

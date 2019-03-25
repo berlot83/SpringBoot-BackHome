@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<div th:include="default :: header"></div>
+</head>
+<body>
+	<navbar th:replace="default :: bar"></navbar>
+
+	<h2>Datos de contacto</h2>
+
+	<div style="padding: 50px">
+		<ol>
+			<li><label>Medicado: </label> <span th:if="${qr.lost.medicated}" th:text="${qr.lost.medicated}"></span></li>
+			<li><label>Teléfono: </label> <span th:if="${user.tutor.telephone1}" th:text="${user.tutor.telephone1}"></span></li>
+			<li><label>Teléfono: </label> <span th:if="${user.tutor.telephone2}" th:text="${user.tutor.telephone2}"></span></li>
+			<li><label>Teléfono: </label> <span th:if="${user.tutor.telephone3}" th:text="${user.tutor.telephone3}"></span></li>
+		</ol>
+
+	</div>
+
+	<footer th:replace="default :: footer"></footer>
+</body>
+</html>
