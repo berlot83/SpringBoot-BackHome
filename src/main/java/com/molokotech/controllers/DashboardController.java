@@ -52,25 +52,12 @@ public class DashboardController {
 	@Autowired
 	QrService qrService;
 	
-//	@GetMapping("/edit-contact")
-//	public void editDataContact(@ModelAttribute Tutor tutor, Model model) {
-//		PrintName.printUser(model);
-//		User user = userService.findUser(userUtilities.userName());
-//		if(user != null) {
-//			user.setTutor(tutor);
-//			userService.createUser(user);
-//		}else {
-//			System.out.println("It seems it user doesn't exist");
-//		}
-//	}
-	
 	@GetMapping("/id/{shortId}")
 	public String seePublicData(@PathVariable String shortId, Model model) {
 		QR qr = qrService.findBySHortId(shortId);
-		User user = userService.findUser(userUtilities.userName());
 		PrintName.printUser(model);
 		String result = null;
-		if(qr != null && user != null) {
+		if(qr != null) {
 			model.addAttribute("qr",qr);
 			result = "id";
 		}else {
