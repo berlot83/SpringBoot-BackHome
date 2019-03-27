@@ -19,6 +19,8 @@
 	</properties>
 
 	<dependencies>
+	
+	<!-- Start basics -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-mongodb</artifactId>
@@ -46,8 +48,17 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- End basics -->
 		
-				<!-- Zxing library start -->
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-mail -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+			<version>2.0.4.RELEASE</version>
+		</dependency>
+		<!-- JavaMail end -->
+		
+		<!-- Zxing library start -->
 		<dependency>
 			<groupId>com.google.zxing</groupId>
 			<artifactId>core</artifactId>
@@ -60,7 +71,6 @@
 		</dependency>
 		<!-- Zxing library end -->
 
-
 		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
@@ -68,7 +78,43 @@
 			<version>2.8.2</version>
 		</dependency>
 		
+		<!-- Start Google maps -->
+		<!-- https://mvnrepository.com/artifact/com.google.maps/google-maps-services -->
+		<dependency>
+			<groupId>com.google.maps</groupId>
+			<artifactId>google-maps-services</artifactId>
+			<version>0.2.9</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+		<!-- <version>1.7.25</version> Commmented for irregularities with version spring -->
+		</dependency>
+		<!-- End Google maps -->
+		
+		<!-- https://mvnrepository.com/artifact/com.mercadopago/java-sdk -->
+		<dependency>
+		<groupId> com.mercadopago </groupId>
+		<artifactId> dx-java </artifactId>
+		<version> 1.0.36 </version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.mercadopago</groupId>
+			<artifactId>sdk</artifactId>
+			<version>0.3.4</version>
+		</dependency>
+		
+		
 	</dependencies>
+
+<repositories>
+		<repository>
+			<id>mercadopago</id>
+			<url>https://github.com/mercadopago/sdk-java/raw/master/releases</url>
+		</repository>
+</repositories>
 
 	<build>
 		<plugins>

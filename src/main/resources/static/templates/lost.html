@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<div th:include="default :: header"></div>
+<link rel="stylesheet" type="text/css" href="../css/lost.css"/>
+</head>
+<body>
+	<navbar th:replace="default :: bar"></navbar>
+<div class="card" id="card">
+	<h2 class="card-header text-white aqua-gradient"><button onclick="window.location.href='/dashboard'" class="btn btn-md blue-gradient"><i class="fa fa-arrow-left"></i></button> Cargar información del beneficiario</h2>
+
+	<div style="margin:20px; flex-direction: column" class="d-flex">
+	<input type="hidden" th:value="${qr.shortId}" id="shortId" name="shortId">
+			
+			<div class="form-group">
+				<label>Nombre / código / cifrado</label>
+				<small class="text-danger"> (Este campo por seguridad no será visible por nadie a menos que se active.)</small>
+				 <input type="text" class="form-control" id="name">
+			</div>
+
+			<div class="form-group">
+				<label>Edad</label> <input type="number" class="form-control" id="age">
+			</div>
+
+			<div class="form-group">
+				<label>Medicado</label>
+				<select id="medicated" class="form-control">
+					<option value=false>No</option>
+					<option value=true>Sí</option>
+				</select>
+			</div>
+
+			<div class="form-group">
+				<label>Illness</label>
+			<small class="text-danger"> (Separe por comas si llegara a tener más de una enfermedad.)</small>
+				<input type="text" id="illness" class="form-control">
+			</div>
+		
+
+			<div class="form-group">
+				<label>Medicación</label> <input type="text" id="medication" class="form-control">
+			</div>
+
+			<div class="form-group">
+				<button class="btn btn-lg blue-gradient" onclick="createLostPerson()">Cargar datos</button>
+			</div>
+			<br><br><br><br>
+	</div>
+</div>
+
+<script>
+function createLostPerson(){
+	var xhr = new XMLHttpRequest();
+	var url = "/create-lost";
+	
+	var shortId = document.getElementById("shortId").value;
+	var name = document.getElementById("name").value;
+	var age = document.getElementById("age").value;
+	var illness = document.getElementById("illness").value;
+	var medication = document.getElementById("medication").value;
+
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState == 4 && xhr.status == 200){
+			alert("200");
+			
+		}
+	}
+	
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhr.send("shortId="+shortId+ "&name="+ name + "&age="+ age + "&illness=" + illness + "&medication=" + medication);
+
+}
+</script>
+	<footer th:replace="default :: footer"></footer>
+</body>
+</html>

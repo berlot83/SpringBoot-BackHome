@@ -13,7 +13,6 @@ public class User {
 	private String[] authorities;
 	private String name;
 	private String emailToken;
-	private Tutor tutor;
 	private boolean enabled;
 
 	/*
@@ -86,14 +85,6 @@ public class User {
 
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
-	}
-
-	public Tutor getTutor() {
-		return tutor;
-	}
-
-	public void setTutor(Tutor tutor) {
-		this.tutor = tutor;
 	}
 
 }

@@ -3,7 +3,7 @@ package com.molokotech.model;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 
-public class Person {
+public abstract class Person {
 
 	@Id
 	private ObjectId id;

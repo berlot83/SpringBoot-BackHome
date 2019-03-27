@@ -4,22 +4,60 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
 <div th:include="default :: header"></div>
+<link rel="stylesheet" type="text/css" href="../css/id.css"/>
+	<script type="text/javascript" src="../js/geolocalization.js"></script>
 </head>
 <body>
-	<navbar th:replace="default :: bar"></navbar>
+<navbar th:replace="default :: bar"></navbar>
 
-	<h2>Datos de contacto</h2>
-
+<div th:if="${qr.status}" class="card rounded" id="card">
+	<h4 class="card-header text-white aqua-gradient">Datos de contacto proporcionados</h4>
 	<div style="padding: 50px">
-		<ol>
-			<li><label>Medicado: </label> <span th:if="${qr.lost.medicated}" th:text="${qr.lost.medicated}"></span></li>
-			<li><label>Teléfono: </label> <span th:if="${user.tutor.telephone1}" th:text="${user.tutor.telephone1}"></span></li>
-			<li><label>Teléfono: </label> <span th:if="${user.tutor.telephone2}" th:text="${user.tutor.telephone2}"></span></li>
-			<li><label>Teléfono: </label> <span th:if="${user.tutor.telephone3}" th:text="${user.tutor.telephone3}"></span></li>
-		</ol>
-
+		<ul>
+		<li style="list-style:none"><strong><label>Métodos de contacto con tutor/res:</label></strong></li>
+			<li>Código: <span th:text="${qr?.shortId}" id="shortId"></span> <small class="text-danger">(Utilice el código en reemplazo del nombre del individuo)</small></li>
+			<li>Teléfono: <span th:if="${qr?.tutor?.telephone1}" th:text="${qr?.tutor?.telephone1}"></span></li>
+			<li>Teléfono: <span th:if="${qr?.tutor?.telephone2}" th:text="${qr?.tutor?.telephone2}"></span></li>
+			<li>Teléfono: <span th:if="${qr?.tutor?.telephone3}" th:text="${qr?.tutor?.telephone3}"></span></li>
+			<li>Email: <span th:if="${qr?.tutor?.email}" th:text="${qr?.tutor?.email}" id="email"></span></li>
+		</ul>
+		<ul>
+		<li style="list-style:none"><strong><label>Estado de Salud:</label></strong></li>
+			<li>Medicado: <span th:if="${qr?.lost?.medicated}" th:text="${qr?.lost?.medicated}"></span></li>
+			<li>Medicación: <span th:if="${qr?.lost?.medication}" th:text="${qr?.lost?.medication}"></span></li>
+		</ul>
+		
+		<small class="text-danger"><strong>No se proporciona, nombre del individuo ni del tutor para resguardar datos personales y socio-económicos que no infieren en la ayuda para el individuo en situación de desorientación.</strong></small>
+		<hr>
+		
+		<ul>
+		<li style="list-style:none"><strong><label>Números de emergencias: Argentina</label></strong></li>
+		<li>Emergencias: 911</li>
+		<li>Emergencias médicas: 107</li>
+		<li>Chicos y chicas extraviados: 100</li>
+		</ul>
 	</div>
+</div>
 
+<div th:unless="${qr.status}" class="card rounded" id="card">
+<h2 class="card-header text-white aqua-gradient"><i class="fas fa-user-secret"></i> Datos de contacto Protegidos</h2>
+	<div style="padding:40px;">
+		<ul>
+			<li><i class="fa fa-lock" style="color:LimeGreen"></i> El usuario no permite la lectura de datos por el momento.</li>
+			<li>Si encontró una persona desorientada y no tiene activo los datos de este QR, comuníquese con la policía.</li>
+			<li>Comuníquese con nosotros por este medio e indíquenos este código: <strong th:text="${qr?.shortId}"></strong>, nosotros nos comunicaremos con sus tutores haciendo de capa intermedia.</li>
+		</ul>
+	</div>
+</div>
+
+<script>
+/* Needs to be here to wait charge email input, not onload */
+$( document ).ready(function() {
+	getLocalization();
+});
+</script>
+
+<br><br><br><br>
 	<footer th:replace="default :: footer"></footer>
 </body>
 </html>

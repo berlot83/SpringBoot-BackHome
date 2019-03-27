@@ -38,6 +38,10 @@ public class PageConfig implements WebMvcConfigurer {
 		registry.addViewController("/index").setViewName("index");
 		registry.addViewController("/login").setViewName("login");
 		registry.addViewController("/sign-up").setViewName("sign-up");
+		registry.addViewController("/dashboard").setViewName("dashboard");
+		registry.addViewController("/id").setViewName("id");
+		registry.addViewController("/lost").setViewName("lost");
+		registry.addViewController("/lost").setViewName("coordinates");
 	}
 
 	@Bean

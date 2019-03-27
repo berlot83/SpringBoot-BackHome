@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<div th:include="default :: header"></div>
+<link rel="stylesheet" type="text/css" href="../css/tutor.css"/>
+<script type="text/javascript" src="../js/utilities.js"></script>
+</head>
+<body>
+	<navbar th:replace="default :: bar"></navbar>
+
+<div class="card" id="card">
+	<h2 class="card-header text-white aqua-gradient"><button onclick="window.location.href='/dashboard'" class="btn btn-md blue-gradient"><i class="fa fa-arrow-left"></i></button> Cargar información del Tutor</h2>
+
+	<div style="padding:20px;">
+	<input type="hidden" th:value="${qr.shortId}" id="shortId" name="shortId">
+			<div class="form-group">
+				<label>Teléfono 1 </label> <input type="text" onkeypress="isInputNumber(event)" class="form-control" id="telephone1">
+			</div>
+
+			<div class="form-group">
+				<label>Teléfono 2 </label> <input type="text" onkeypress="isInputNumber(event)" class="form-control" id="telephone2">
+			</div>
+
+			<div class="form-group">
+				<label>Teléfono 3 </label> <input type="text" onkeypress="isInputNumber(event)" class="form-control" id="telephone3">
+			</div>
+
+			<div class="form-group">
+				<label>Email </label> <input type="email" class="form-control" id="email">
+			</div>
+			
+			<div class="form-group">
+				<button class="btn btn-lg blue-gradient" onclick="createOrUpdateTutor()">Cargar datos</button>
+				<small class="text-danger"> (En ningún campo se debería definir de quien pertenece cada número, no es importante para comunicarse con usted)</small>
+			</div>
+			
+	</div>
+</div>
+<br><br><br><br><br>
+<script>
+function createOrUpdateTutor(){
+	var xhr = new XMLHttpRequest();
+	var url = "/create-tutor";
+	
+	var shortId = document.getElementById("shortId").value;
+	var telephone1 = document.getElementById("telephone1").value;
+	var telephone2 = document.getElementById("telephone2").value;
+	var telephone3 = document.getElementById("telephone3").value;
+	var email = document.getElementById("email").value;
+
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState == 4 && xhr.status == 200){
+			alert("200");
+		}
+	}
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhr.send("shortId="+ shortId + "&telephone1="+ telephone1 + "&telephone2="+ telephone2 + "&telephone3=" + telephone3 + "&email=" + email);
+}
+</script>
+
+<footer th:replace="default :: footer"></footer>
+</body>
+</html>

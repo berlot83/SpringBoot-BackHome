@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<div th:include="default :: header"></div>
+<link rel="stylesheet" type="text/css" href="../css/coordinates.css"/>
+</head>
+<body>
+<navbar th:replace="default :: bar"></navbar>
+
+<div th:if="${coordinates}" class="card rounded" id="card">
+	<h2 class="card-header text-white aqua-gradient"><button onclick="window.location.href='/dashboard'" class="btn btn-md blue-gradient"><i class="fa fa-arrow-left"></i></button> <i class="fas fa-map-marked-alt"></i> Historial de coordenadas</h2>
+					<!--/*/ <th:block th:each="coordinate ,iStat : ${coordinates}"> /*/-->
+					<div style="padding-top:20px;">
+					<ul id="coordinates">
+					<li style="list-style:none; font-weight:bold" th:text="'Indice de Coordenada: '+${iStat.index}"></li>
+						<li><small style="font-weight:bold">Dia y hora </small><small th:text="${coordinate.dateTime}"></small></li>
+						<li><small style="font-weight:bold">Latitud: </small><small th:text="${coordinate.latitude}"></small></li>
+						<li><small style="font-weight:bold">Longitud: </small><small th:text="${coordinate.longitude}"></small></li>
+						<li><a style="color:blue" th:href="@{'https://www.google.com/maps/search/?api=1&query='+${coordinate.latitude}+','+${coordinate.longitude}}" target="_blank">Ver en el mapa.</a></li>
+					</ul>
+					</div>
+					<!--/*/ </th:block> /*/-->
+</div>
+
+<div th:unless="${coordinates}" class="card rounded" style="width:600px; margin: 0 auto; margin-top: 30px">
+	<h2 class="card-header text-white aqua-gradient"><button onclick="window.location.href='/dashboard'" class="btn btn-md blue-gradient"><i class="fa fa-arrow-left"></i></button> <i class="fas fa-map-marked-alt"></i> Historial de coordenadas</h2>
+	<div style="padding: 20px">	
+		<p>No hay datos cargados hasta el momento.</p>
+	</div>
+</div>
+
+<br><br><br><br>
+
+	
+<footer th:replace="default :: footer"></footer>
+</body>
+</html>
+	

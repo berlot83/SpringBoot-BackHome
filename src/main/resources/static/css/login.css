@@ -1,0 +1,11 @@
+body{
+	background: -moz-linear-gradient(90deg, #ecf7f9 20%, LightSteelBlue 20%, LightSteelBlue 40%, SteelBlue 40%, SteelBlue 60%, LightSteelBlue 60%, LightSteelBlue 80%, #ecf7f9 80%);
+	background: -webkit-linear-gradient(90deg, #ecf7f9 20%, LightSteelBlue 20%, LightSteelBlue 40%, SteelBlue 40%, SteelBlue 60%, LightSteelBlue 60%, LightSteelBlue 80%, #ecf7f9 80%);
+	background: linear-gradient(90deg, #ecf7f9 20%, LightSteelBlue 20%, LightSteelBlue 40%, SteelBlue 40%, SteelBlue 60%, LightSteelBlue 60%, LightSteelBlue 80%, #ecf7f9 80%);
+}
+
+#card{
+	width:400px;
+	margin: 0 auto;
+	margin-top:30px;
+}

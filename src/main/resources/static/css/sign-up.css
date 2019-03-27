@@ -1,0 +1,5 @@
+body{
+	background: -moz-linear-gradient(-65deg, #ecf7f9 20%, LightSteelBlue 20%, LightSteelBlue 40%, SteelBlue 40%, SteelBlue 60%, LightSteelBlue 60%, LightSteelBlue 80%, #ecf7f9 80%);
+	background: -webkit-linear-gradient(-65deg, #ecf7f9 20%, LightSteelBlue 20%, LightSteelBlue 40%, SteelBlue 40%, SteelBlue 60%, LightSteelBlue 60%, LightSteelBlue 80%, #ecf7f9 80%);
+	background: linear-gradient(-65deg, #ecf7f9 20%, LightSteelBlue 20%, LightSteelBlue 40%, SteelBlue 40%, SteelBlue 60%, LightSteelBlue 60%, LightSteelBlue 80%, #ecf7f9 80%);
+}

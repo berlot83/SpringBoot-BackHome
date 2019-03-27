@@ -68,7 +68,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .antMatchers("/sign-up").permitAll()
 //        .antMatchers("/user").hasRole("USER")
 //        .antMatchers("/dashboard").hasRole("ADMIN").anyRequest().authenticated()
-        .antMatchers("/dashboard","/create-qr", "/assign-qr", "/edit-contact", "/all-user-qr", "/id").authenticated()
+        .antMatchers("/dashboard","/create-qr", "/assign-qr", "/edit-contact", "/all-user-qr", "/lost", "/coordinates/**").authenticated()
         .and()
     .formLogin().loginPage("/login")
         .and()

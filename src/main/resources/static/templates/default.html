@@ -7,18 +7,17 @@
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-79204873-3"></script>
 
-
 <!-- Favicon start -->
-<!-- <link rel="apple-touch-icon" sizes="180x180" href="/appleTouchIcon.png"> -->
-<!-- <link rel="icon" type="image/png" href="../img/iconoPet32x32.png" sizes="32x32"> -->
-<!-- <link rel="icon" type="image/png" href="../img/iconoPet16x16.png" sizes="16x16"> -->
-<!-- <meta name="theme-color" content="#ffffff"> -->
+<link rel="apple-touch-icon" sizes="180x180" href="/logoRH180x180.png">
+<link rel="icon" type="image/png" href="../img/logoRH32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../img/logoRH16x16.png" sizes="16x16">
+<meta name="theme-color" content="#ffffff">
 <!-- Favicon end -->
 
 <link href="https://fonts.googleapis.com/css?family=Mali:500|Material+Icons" rel="stylesheet">
-<title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE">Pet-Cloud</title>
+<title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE">Return-Home</title>
 <link rel="stylesheet" type="text/css" href="../css/default.css" />
-
+<link rel="stylesheet" type="text/css" href="../css/social-media.css" />
 <!-- Material design start libs -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
@@ -41,8 +40,29 @@
 	crossorigin="anonymous"></script>	
 <!-- Be aware HTML2canvas, for some reason is the library end -->
 
+<!-- Alertify start libs -->
+<!-- JavaScript -->
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/alertify.min.js"></script>
+<!-- CSS -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/alertify.min.css"/>
+<!-- Default theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/default.min.css"/>
+<!-- Semantic UI theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/semantic.min.css"/>
+<!-- Bootstrap theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/bootstrap.min.css"/>
+<!-- Alertify end libs -->
 
-<title>Pet-Cloud</title>
+<style type="text/css">
+a{
+color:white;
+}
+
+a:hover{
+color:pink;
+}
+</style>
+<title>Return-Home</title>
 </head>
 
 <body>
@@ -56,8 +76,8 @@
 		<div id="logoNavigation">
 			<!-- Logo Home -->
 			<a class="nav-link navbar-brand" href="/index"><img
-				src="../img/iconoPet75.png" width="30" height="30" alt="Home">
-				Pet-Cloud</a>
+				src="../img/logoRH75x75.png" width="45" height="45" alt="Home">
+				R.H.</a>
 
 			<!-- Print Collapse Icon -->
 			<button class="navbar-toggler navbar-dark navbar-toggler-right"
@@ -71,22 +91,8 @@
 		<div class="collapse navbar-collapse" id="navbarNavDropdown">
 
 			<ul class="navbar-nav">
-				<li class="nav-item dropdown dropdown-content"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkPetQR" data-toggle="dropdown"   onmouseout="removeBounce(this)" onmouseover="addBounce(this)" aria-haspopup="true" aria-expanded="false"><i class="fas fa-qrcode" style="color: white"></i> Pet-QR </a>
-					<div class="dropdown-menu"
-						aria-labelledby="navbarDropdownMenuLinkPetQR"
-						style="background-color: black; color: white;">
-						<a class="dropdown-item" href="/prepaid-qr"><i
-							class="fas fa-qrcode" style="color: white"></i>   <span style="color:white"></span></a> <a class="dropdown-item" href="/db-lost-pet"><i
-							class="fas fa-database" style="color: white"></i>   <span style="color:white"></span></a>
-					</div></li>
 
-				<li class="nav-item"><a class="nav-link" href="/pricing"><i class="fas fa-paw" ></i> <span>Productos</span></a></li>
-
-				<li class="nav-item" ><a class="nav-link" href="/about"><i
-						class="fas fa-wrench"></i> <span></span></a></li>
-
-				<li class="nav-item"><a class="nav-link" href="/faq"><i
-						class="far fa-question-circle"></i> F.A.Q</a></li>
+				<li class="nav-item"><a class="nav-link" href="/pricing"><i class="fas fa-qrcode" ></i> <span>Código-RH</span></a></li>
 
 				<li class="nav-item active"><a class="nav-link" href="#"><i class="far fa-envelope"></i> <span>Contacto</span></a></li>
 
@@ -96,8 +102,8 @@
 		<!-- Logout Bundle buttons, do not change the order  -->
 		<!-- Print Username -->
 		<div style="position:relative;top:0;left:0;">
-			<button th:if="${currentUser == 'Guesst'}" style="display:none" class="nav-link btn btn-md blue-gradient"><a href="/account" id="currentUserButton" style="position:relative;top:0;left:0; text-shadow: 1px 1px black;" th:text="${fullName}" onmouseout="removeBounce(this)" onmouseover="addBounce(this)"></a></button>
-			<button th:unless="${currentUser == 'Guesst'}" class="nav-link btn btn-md blue-gradient"><a href="/account" id="currentUserButton" style="position:relative;top:0;left:0; text-shadow: 1px 1px black;" th:text="${fullName}" onmouseout="removeBounce(this)" onmouseover="addBounce(this)"></a></button>
+			<button th:if="${currentUser == 'Guesst'}" style="display:none" class="nav-link btn btn-md blue-gradient"><a href="/dashboard" id="currentUserButton" style="position:relative;top:0;left:0; text-shadow: 1px 1px black;" th:text="${fullName}" onmouseout="removeBounce(this)" onmouseover="addBounce(this)"></a></button>
+			<button th:unless="${currentUser == 'Guesst'}" class="nav-link btn btn-md blue-gradient"><a href="/dashboard" id="currentUserButton" style="position:relative;top:0;left:0; text-shadow: 1px 1px black;" th:text="${fullName}" onmouseout="removeBounce(this)" onmouseover="addBounce(this)"></a></button>
 			<span th:if="${currentUser != 'Guesst'}" class="badge badge-sm badge-danger" style="position:absolute; top:-7; left:-20;"><i class="fas fa-cogs"></i> <span>Administrador</span></span>
 		</div>
 		
@@ -105,8 +111,6 @@
 			th:href="@{/login}" id="loginButton"><i class="fas fa-user"
 			style="color: white;"></i> Log in</a>
 			
-			<a href="/login">Login</a>
-
 		<form style="margin-bottom: 6px; padding: 0px" class="nav-link" action="/logout"
 			method="POST">
 			<button style="text-shadow: 1px 2px black;" type="submit"
@@ -131,10 +135,10 @@
 	<div th:if="${error != null}" th:text="#{default.erroraccount}" class="alert alert-danger" id="error"></div>
 		<div class="container-fluid py-3" >
 			<div class="row">
-				<div id="footerBrand" class="col-md-7" onmouseout="removeBounce(this)" onmouseover="addBounce(this)">
+				<div id="footerBrand" class="col-md-7">
 					Designed by <img alt="Molokotech" id="logo"
 						src="/img/molokoalternativo.png" class="img-fluid"
-						onmouseover="changeCursorToimages(this)" onclick="redirectTo()"> |   | Powered by <img src="../img/heroku-logo.png" id="herokuLogo" onmouseover="changeCursorToimages(this)" onclick="window.location.href='https://heroku.com'" class="img-fluid" style="height:28px"><span class="small">
+						 onclick="window.location.href='http://molokotech.com'"> |   | Powered by <img src="../img/heroku-logo.png" id="herokuLogo" onclick="window.location.href='https://heroku.com'" class="img-fluid" style="height:28px"><span class="small">
 						<strong style="color: #ff8000">Vet-Cloud</strong>® y <Strong
 						style="color: #ff8000">Pet-QR</Strong>® <span>son marcas Registradas de</span> 
 						<strong style="color: #ff8000">Molokotech Solutions</strong>.</span>
