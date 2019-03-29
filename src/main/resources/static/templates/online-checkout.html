@@ -1,0 +1,218 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<div th:include="default :: header"></div>
+	<link rel="stylesheet" type="text/css" href="../css/online-checkout.css" />
+</head>
+
+<body>
+	<nav th:replace="default :: bar"></nav>
+
+<!-- CSS rectangle mobile only Start -->
+	<div id="rectangle" style="color: white; display:none;">
+		<div style="position: relative; left: 5px;">
+			<strong
+				style="text-shadow: 1px 2px black; font-size: 20px !important;">Checkout
+				<img id="logoPaymentMobile" src="../img/mp64x64.png" style="width:64px;height:64px;">
+			</strong>
+		</div>
+	</div>
+<!-- CSS rectangle mobile only Start -->
+
+	<!-- CSS triangle Start -->
+	<div id="triangle-topleft" style="color: white">
+		<div style="position: absolute; top: -185px; left: 15px">
+			<strong
+				style="text-shadow: 1px 2px black; font-size: 20px !important;">Checkout
+				<img id="logoPaymentDesktop" src="../img/mp64x64.png" style="width:64px;height:64px;">
+			</strong>
+		</div>
+	</div>
+	<!-- CSS triangle Start -->
+
+	<div id="fullcontainer" class="" style="padding-top: 0px;">
+		
+		<!-- Columns paynow flexbox start -->
+		<div class="paynowDiv" style="text-shadow: 0px 0px 0px black; padding-top: 30px;">
+		    <ul class="columns" style="background-color:white">
+		        <li class="title aqua-gradient"><img src="../img/prepaidQR1366x900.jpg"  class="img-fluid" style="border:2px solid white" /><br />Return Home Code</li>
+		        <li>
+		        	<div class="form-group">
+						<label for="user"><i class="fas fa-flag" style="color: #7A52A7"></i> País</label>
+						<select id="selectCountry" onchange="selectCountryPayment()" class="form-control">
+							<option value=1>Argentina</option>
+							<option value=2>Colombia</option>
+							<option value=3>Uruguay</option>
+							<option value=4>Chile</option>
+							<option value=5>Venezuela</option>
+							<option value=6>Ecuador</option>
+							<option value=7>Paraguay</option>
+							<option value=8>Bolivia</option>
+							<option value=9>Colombia</option>
+							<option value=10>Brazil</option>
+							<option value=11>Peru</option>
+							<option value=11>España</option>
+							<option value=11>EEUU</option>
+						</select>
+					</div>
+				</li>
+		        <li>
+						<label for="user"><i class="fas fa-user" style="color: #7A52A7"></i> Usuario:</span></label>
+						<p id="user" th:if="${user.name} != null" th:text="${user.name}" style="color: LimeGreen; margin-left: 20px;"></p>
+				</li>
+		        <li>
+						<label for="email"><i class="fas fa-envelope" style="color: #7A52A7"></i> Email:</label>
+						<p th:if="${user.email != null}" th:text="${user.email}" style="color: LimeGreen; margin-left: 20px;"></p>
+						<p th:unless="${user.email != null}"></p>
+				</li>
+				
+			<!-- Payment Li PayPal start -->
+		        <li id="paypal" style="display:none;">
+			<!-- PayPal for the rest countries start -->
+					<label for="user" style="text-align:left"><i class="far fa-credit-card" style="color: #7A52A7"></i> <strong>F. de pago:</strong> <img src="../img/paypal-logo-horizontal-20x80.png" class="text-center"></label>
+					<select id="kindOfPaymentPayPal" class="form-control" onchange="">
+						<option value=0>Elegir</option>
+						<option value=1>PayPal/ Compra definitiva/ sin límite de uso</option>
+					</select>
+				<!-- PayPal for the rest countries end -->
+					<br>
+				<!-- Total paypal start -->	
+					<b>Total:</b><p style="text-align:center">u$s 13,99.-</p>
+				<!-- Total paypal end -->
+				
+				<!-- PayPal for the rest of the countries start -->
+					<div id="paypalButton" class="col-12 text-center">
+<!-- 						<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top"> -->
+<!-- 							<input type="hidden" name="cmd" value="_s-xclick"> -->
+<!-- 							<input type="hidden" name="hosted_button_id" value="KKFHUS8MDJZ86"> -->
+<!-- 							<input type="image" src="https://www.paypalobjects.com/es_XC/AR/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"> -->
+<!-- 							<img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1"> -->
+<!-- 						</form> -->
+						
+							<!-- PayPal live 13,99 u$s, no sandbox -->
+							<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+								<input type="hidden" name="cmd" value="_s-xclick">
+								<input type="hidden" name="hosted_button_id" value="KKFHUS8MDJZ86">
+								<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+								<img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
+							</form>
+						
+							<!-- SandBox need to be override / We have a big problem with Charset, soesnt admit utf-8, alway windows 1252, so fail if adrress or other data have accent or other char -->
+<!-- 							<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top"> -->
+<!-- 								<input type="hidden" name="charset" value="utf-8"> -->
+<!-- 								<input type="hidden" name="cmd" value="_s-xclick"> -->
+<!-- 								<input type="hidden" name="hosted_button_id" value="AXH99AT9PLRAC"> -->
+<!-- 								<input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"> -->
+<!-- 								<img alt="" border="0" src="https://www.sandbox.paypal.com/es_XC/i/scr/pixel.gif" width="1" height="1"> -->
+<!-- 							</form> -->
+					</div>				
+		    	<!-- PayPal for the rest of the countries end -->
+				</li>
+		     <!-- Payment Li PayPal end -->   
+		        
+		     <!-- Payment Li MercadoPago start -->  
+		     	<li id="mercadopago" style="text-align:left">
+		        	<!-- MercadoPago start -->
+					<label for="user" style="text-align:left"><i class="far fa-credit-card" style="color: #7A52A7"></i> <strong>F. de Pago:</strong> <img src="../img/mercadopago-logo-20x67.png" /></label>
+					<select id="kindOfPayment" class="form-control" onchange="">
+						<option value=0>Elegir</option>
+						<option value=1>MercadoPago/ Compra definitiva/ sin límite de uso</option>
+					</select>
+					<!-- MercadoPago end-->
+		        
+		        <br>
+		        <!-- Total mercadopago start -->
+		        	<b>Total:</b><p style="text-align:center">$ 550.-</p>		  
+		        <!-- Total mercadopago end -->
+		        
+		        <!-- MercadoPago for Argentina only start -->
+			    	<div id="mercadopagoButton" onclick="scrollFunction()" class="col-12 text-center">
+			    		<a mp-mode="dftl" style="font-family: 'Mali', cursive !important; margin-bottom: 15px; text-align: center" href="https://www.mercadopago.com/mla/checkout/start?pref_id=310115679-128c322a-ed79-455b-b74d-5cf09ac4703f" name="MP-payButton" class='blue-ar-l-rn-arall'>Pagar</a>
+			    	</div>
+				<!-- MercadoPago for Argentina only end -->
+		    	</li>
+		    <!-- Payment Li MercadoPago end -->
+		    
+		    </ul>
+		</div>
+		    <p style="color: white; background: rgba(0, 0, 0, 0.5); text-align:center; border-radius: 5px; padding: 5px;"><i style='color:LimeGreen;' class='fas fa-shield-alt'></i> <span>Cifrado de datos</span> <i style='color:LimeGreen' class='fas fa-lock'></i> <span>SSL, nadie verá su información financiera.</span></p>
+		<p style="color:white; text-shadow: 0px 0px 2px black; background: rgba(0, 0, 0, 0.5); text-align:center; border-radius: 5px; padding: 5px;"><span>Recibirá su código en la casilla de mail declarada a</span> <strong style="color:gold">MercadoPago</strong> <span>o</span> <strong style="color:CornflowerBlue">PayPal</strong><span>, para activarlo visite</span> <a href="/prepaid-qr" style="color:turquoise">aquí</a>.</p>
+		<!-- Columns paynow flexbox start -->
+<br>
+<br>
+<br>
+<br>
+	</div>
+	
+	<!-- Test paypal sandbox deactivate, delete if necesary -->
+<!-- 	<h5>Paypal Sandbox</h5> -->
+	<!-- We have a big problem with Charset, soesnt admit utf-8, alway windows 1252, so fail if adrress or other data have accent or other char -->
+<!-- 	<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top"> -->
+<!-- 		<input type="hidden" name="charset" value="utf-8"> -->
+<!-- 		<input type="hidden" name="cmd" value="_s-xclick"> -->
+<!-- 		<input type="hidden" name="hosted_button_id" value="AXH99AT9PLRAC"> -->
+<!-- 		<input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"> -->
+<!-- 		<img alt="" border="0" src="https://www.sandbox.paypal.com/es_XC/i/scr/pixel.gif" width="1" height="1"> -->
+<!-- 	</form> -->
+	
+	<!-- Test paypal sandbox -->
+<br><br><br><br>
+<script>
+	/* Show MercadoPago (Argentina only) or PayPay on depends the election, is on CSS, pretty simple way */
+	function selectCountryPayment(){
+		var logoPaymentMobile = document.getElementById("logoPaymentMobile");
+		var logoPaymentDesktop = document.getElementById("logoPaymentDesktop");
+		var selectCountry = document.getElementById("selectCountry").value;
+		var paypal = document.getElementById("paypal");
+		var mercadopago = document.getElementById("mercadopago");
+		
+		if(selectCountry == "1"){
+			mercadopago.style.display = "block";
+			paypal.style.display = "none";
+			logoPaymentDesktop.src = "../img/mp64x64.png";
+			logoPaymentMobile.src = "../img/mp64x64.png";
+		}else{
+			mercadopago.style.display = "none";
+			paypal.style.display = "block";
+			logoPaymentDesktop.src="../img/paypalLogo.png";
+			logoPaymentMobile.src = "../img/paypalLogo.png";
+		}
+	}
+	/* Select way of payment End */
+	
+	/* Scroll to top start */
+	function scrollFunction() {
+		document.body.scrollTop = 0; // For Safari
+		document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+	}
+	/* Scroll to top end */
+</script>
+
+<!-- Script MercadoPago start -->
+<script type="text/javascript">
+		(function() {
+			function $MPC_load() {
+				window.$MPC_loaded !== true
+						&& (function() {
+							var s = document
+									.createElement("script");
+							s.type = "text/javascript";
+							s.async = true;
+							s.src = document.location.protocol
+									+ "//secure.mlstatic.com/mptools/render.js";
+							var x = document
+									.getElementsByTagName('script')[0];
+							x.parentNode.insertBefore(s, x);
+							window.$MPC_loaded = true;
+						})();
+			}
+			window.$MPC_loaded !== true ? (window.attachEvent ? window
+					.attachEvent('onload', $MPC_load)
+					: window.addEventListener('load',
+							$MPC_load, false))
+					: null;
+	})();
+</script>
+	<!-- Script MercadoPago button end -->
+	<footer th:replace="default :: footer"></footer>
+</body>
+</html>

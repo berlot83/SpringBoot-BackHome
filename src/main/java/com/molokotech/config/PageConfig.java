@@ -41,7 +41,8 @@ public class PageConfig implements WebMvcConfigurer {
 		registry.addViewController("/dashboard").setViewName("dashboard");
 		registry.addViewController("/id").setViewName("id");
 		registry.addViewController("/lost").setViewName("lost");
-		registry.addViewController("/lost").setViewName("coordinates");
+		registry.addViewController("/coordinates").setViewName("coordinates");
+		registry.addViewController("/pricing").setViewName("pricing");
 	}
 
 	@Bean

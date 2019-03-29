@@ -52,6 +52,12 @@ public class DashboardController {
 	@Autowired
 	QrService qrService;
 	
+	@GetMapping("/pricing")
+	public String pricing(Model model) {
+		PrintName.printUser(model);
+		return "pricing";
+	}
+	
 	@GetMapping("/id/{shortId}")
 	public String seePublicData(@PathVariable String shortId, Model model) {
 		QR qr = qrService.findBySHortId(shortId);
@@ -153,4 +159,18 @@ public class DashboardController {
 	return result;
 	}
 	
+	
+	@GetMapping("/online-checkout")
+	public String onlineCheckout(Model model) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		User user = userService.findUser(auth.getName());
+		if(user != null) {
+			PrintName.printUser(model);
+			model.addAttribute("user",user);
+			return "online-checkout";
+		}else {
+			System.out.println("User doesn't exist");
+			return "login";
+		}
+	}
 }

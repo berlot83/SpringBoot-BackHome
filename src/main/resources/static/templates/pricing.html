@@ -1,0 +1,50 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+	<div th:include="default :: header"></div>
+	<link rel="stylesheet" type="text/css" href="../css/pricing.css" />
+	<script type="text/javascript" src="../js/pricing.js"></script>
+</head>
+<body class="background-colors">
+	<nav th:replace="default :: bar"></nav>
+	<div id="triangle-topleft-pricing">
+		<img src="../img/mp64x64.png" style="width:64px;height:64px; position: absolute; top: -195px; left: 80px">
+		<img src="../img/paypalLogo.png" style="width:64px;height:64px; position: absolute;top: -195px; left: 10px">
+	</div>
+	<divS class="" style="box-shadow: 0px 0px 25px black;">
+		
+		<!-- Columns sell flexbox start -->
+		<div class="pricingdiv" style="text-shadow: 0px 0px 0px black; padding-top: 30px;">
+		    <ul class="theplan" style="background-color:white">
+		        <li class="title aqua-gradient"><img src="../img/prepaidQR1366x900.jpg"  class="img-fluid" style="border:2px solid white" /><br /> <span>Return Home Code</span></li>
+		        <li><b>Envío online instantáneo</b></li>
+		        <li><b>Muchos tamaños</b></li>
+		        <li><b>Funciona en todo el mundo</b></li>
+		        <li><b>Alta calidad de definición</b></li>
+		        <li><b>Captura las coordenadas de cada lectura</b></li>
+		        <li><b>Almacena las coordenadas junto con fecha y horario</b></li>
+		        <li><b>Te permite control de cuando se ven los datos o no</b></li>
+		        <li><button type="button" class="btn btn-lg blue-gradient" style="text-shadow: 1px 2px black;" onclick="window.location.href='/online-checkout'" rel="nofollow"><i class="fas fa-shopping-cart"></i> Comprar</button></li>
+		        </ul>
+		  <br><br>
+		</div>
+		    <!-- Advice to be logued start -->
+		    <div style="text-shadow: 1px 1px black; width:100%">
+		    	<p th:if="${currentUser} == Guesst" style="margin:0 auto; text-align:center; color: pink; background: rgba(0, 0, 0, 0.5); border-radius: 5px; padding: 5px;">Debe loguearse para comprar <i class="fas fa-user-times"></i> ==>   <a href="/login"><i class="fas fa-user" style="color:lightgreen"></i> Login</a></p>
+				
+				<p th:unless="${currentUser} == Guesst" style="margin:0 auto; text-align:center; color: LimeGreen; background: rgba(0, 0, 0, 0.5); border-radius: 5px; padding: 5px;">Usted está logueado y listo para comprar <i class="fas fa-user-check"></i></p> 
+				
+				<p style="margin:0 auto; text-align:center; background: rgba(0, 0, 0, 0.5); border-radius: 5px; padding: 5px;"> • <i style='color:LimeGreen;' class='fas fa-shield-alt'></i> <span style="color:white">Contamos con certificados SSL para maximizar su seguridad <i style='color:LimeGreen' class='fas fa-lock'></i> Los certificados SSL cifran sus datos para que nadie pueda ver su información financiera. </p>
+			</div>
+		<br><br>
+			<!-- Advice to be logued end -->
+			
+			<!-- Columns sell flexbox end -->
+		</div>
+		<br>
+		<br>
+	<footer th:replace="default :: footer"></footer>
+</body>
+</html>
