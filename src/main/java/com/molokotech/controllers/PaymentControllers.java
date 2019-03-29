@@ -166,7 +166,7 @@ public class PaymentControllers {
 			System.out.println(email);
 
 
-			System.out.println(json.toString(4));
+			//System.out.println(json.toString(4));
 			
 			/* Start checking, sending and reemplacing sellecdOnline java attribute*/
 			QR qr = null;
