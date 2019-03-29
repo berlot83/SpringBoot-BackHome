@@ -164,6 +164,9 @@ public class PaymentControllers {
 		if(topic.equals("payment")) {
 			String email = json.getJSONObject("response").getJSONObject("payer").getString("email");
 			System.out.println(email);
+
+
+			System.out.println(json.toString(4));
 			
 			/* Start checking, sending and reemplacing sellecdOnline java attribute*/
 			QR qr = null;

@@ -125,9 +125,15 @@
 		        <!-- Total mercadopago end -->
 		        
 		        <!-- MercadoPago for Argentina only start -->
-			    	<div id="mercadopagoButton" onclick="scrollFunction()" class="col-12 text-center">
-			    		<a mp-mode="dftl" style="font-family: 'Mali', cursive !important; margin-bottom: 15px; text-align: center" href="https://www.mercadopago.com/mla/checkout/start?pref_id=310115679-128c322a-ed79-455b-b74d-5cf09ac4703f" name="MP-payButton" class='blue-ar-l-rn-arall'>Pagar</a>
-			    	</div>
+<!-- 			    	<div id="mercadopagoButton" onclick="scrollFunction()" class="col-12 text-center"> -->
+<!-- 			    		<a mp-mode="dftl" style="font-family: 'Mali', cursive !important; margin-bottom: 15px; text-align: center" href="https://www.mercadopago.com/mla/checkout/start?pref_id=310115679-128c322a-ed79-455b-b74d-5cf09ac4703f" name="MP-payButton" class='blue-ar-l-rn-arall'>Pagar</a> -->
+<!-- 			    	</div> -->
+
+<a mp-mode="dftl" href="https://www.mercadopago.com.ar/checkout/v1/redirect?preference-id=310115679-a85a6d4d-d9c6-42f4-bf8e-988c00f69516" name="MP-payButton" class='blue-ar-l-rn-none'>Pagar</a>
+<script type="text/javascript">
+(function(){function $MPC_load(){window.$MPC_loaded !== true && (function(){var s = document.createElement("script");s.type = "text/javascript";s.async = true;s.src = document.location.protocol+"//secure.mlstatic.com/mptools/render.js";var x = document.getElementsByTagName('script')[0];x.parentNode.insertBefore(s, x);window.$MPC_loaded = true;})();}window.$MPC_loaded !== true ? (window.attachEvent ?window.attachEvent('onload', $MPC_load) : window.addEventListener('load', $MPC_load, false)) : null;})();
+</script>
+
 				<!-- MercadoPago for Argentina only end -->
 		    	</li>
 		    <!-- Payment Li MercadoPago end -->
