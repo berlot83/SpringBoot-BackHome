@@ -8,17 +8,12 @@ import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.molokotech.model.Coordinates;
 import com.molokotech.model.QR;
 import com.molokotech.service.QrService;
 import com.molokotech.service.UserService;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 import javax.mail.Message;
 import javax.mail.internet.InternetAddress;
 
@@ -41,7 +36,6 @@ public class MailSenderUtilities {
 		return new ClassJavaMailSender();
 	}
 	/* Lib needed fot JavaMail */
-	
 
 	@PostMapping("/sendCoordinatesToMail")
 	public void sendCoordinatesToMail(String latitude, String longitude, String mail, String dateTime, String shortId) {
@@ -51,7 +45,6 @@ public class MailSenderUtilities {
 		coordinates.setLongitude(longitude);
 		coordinates.setDateTime(dateTime);
 		List<Coordinates> list = new ArrayList<>();
-		
 		
 		// String mapAddress =
 		// "https://www.google.com.ar/maps/@"+latitude+","+longitude+"z"; Old and
@@ -71,8 +64,10 @@ public class MailSenderUtilities {
 
 		try {
 			this.emailSender.send(preparator);
+			System.out.println("Test Javamail");
+			System.out.println(mail);
 		} catch (MailException ex) {
-			System.err.println(ex.getMessage());
+			System.err.println(ex.getMessage() + " - Some error occurs on email sended");
 		}
 		
 		System.out.println(shortId);
